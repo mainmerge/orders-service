@@ -4,13 +4,13 @@ REST API для управления клиентами и заказами.
 
 ## Технологии
 
-- Java 17
-- Spring Boot
-- Spring Web
-- Spring Data JPA
-- PostgreSQL
-- Docker & Docker Compose
-- Swagger (OpenAPI)
+* Java 17
+* Spring Boot
+* Spring Web
+* Spring Data JPA
+* PostgreSQL
+* Docker & Docker Compose
+* Swagger (OpenAPI)
 
 ---
 
@@ -22,43 +22,75 @@ REST API для управления клиентами и заказами.
 docker-compose up --build
 ```
 
-Приложение будет доступно:
+Приложение будет доступно по адресу:
 
 ```
-http://localhost:8080
+http://localhost:8081
 ```
 
-Swagger:
+Swagger UI:
 
 ```
-http://localhost:8080/swagger-ui.html
+http://localhost:8081/swagger-ui.html
 ```
 
 ---
 
 ## База данных
 
-- DB: orders
-- User: admin
-- Password: admin
-- Port: 55432
+PostgreSQL запускается через Docker.
+
+Параметры подключения:
+
+* **Database:** orders
+* **User:** admin
+* **Password:** admin
+* **Port:** 55432
 
 ---
 
-## Эндпоинты
+## Эндпоинты API
 
 ### Customers
-- POST /customers
-- GET /customers
-- GET /customers/{id}
-- PUT /customers/{id}
-- DELETE /customers/{id}
+
+* `POST /customers` — создать клиента
+* `GET /customers` — получить список клиентов
+* `GET /customers/{id}` — получить клиента по id
+* `PUT /customers/{id}` — обновить клиента
+* `DELETE /customers/{id}` — удалить клиента
 
 ### Orders
-- POST /orders
-- GET /orders
-- GET /orders/{id}
-- PUT /orders/{id}
-- DELETE /orders/{id}
-- POST /orders/{id}/pay
-- POST /orders/{id}/cancel
+
+* `POST /orders` — создать заказ
+* `GET /orders` — получить список заказов
+* `GET /orders/{id}` — получить заказ по id
+* `PUT /orders/{id}` — обновить заказ
+* `DELETE /orders/{id}` — удалить заказ
+* `POST /orders/{id}/pay` — оплатить заказ
+* `POST /orders/{id}/cancel` — отменить заказ
+
+---
+
+## Postman Collection
+
+Для тестирования API можно использовать Postman коллекцию:
+
+```
+Orders Service.postman_collection.json
+```
+
+---
+
+## Архитектура
+
+Проект реализован по архитектуре **MVC**:
+
+* **Controller** — обработка HTTP-запросов
+* **Service** — бизнес-логика приложения
+* **Repository** — доступ к данным через Spring Data JPA
+
+---
+
+## Автор
+
+Aigerim Kaiyrzhanova
